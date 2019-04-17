@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+            .block {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background: #2ad;
+            }
+            #block1 {
+                left: 0;
+                top: 50px;
+                background: #2ad;
+            }
+            #block2 {
+                left: 0;
+                top: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="block" id="block1">setInterval</div>
+        <div class="block" id="block2">requestAnimationFrame</div>
+        <script src="dist/tween-task.js"></script>
+    </body>
+</html>

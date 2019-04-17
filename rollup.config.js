@@ -4,7 +4,7 @@ import { uglify } from 'rollup-plugin-uglify';
 const ifPro = process.env.NODE_ENV === 'production';
 
 export default {
-    input: './src/index.ts',
+    input: ifPro ? './src/lib/Task.ts' : './src/index.ts',
     output: {
         file: './dist/tween-task.js',
         format: 'umd',
@@ -13,8 +13,8 @@ export default {
     plugins: [
         typescript({
             tsconfig: 'tsconfig.json'
-        })
-        // ...(ifPro ? [uglify()] : [])
+        }),
+        ...(ifPro ? [uglify()] : [])
     ],
     watch: {
         include: 'src/**',

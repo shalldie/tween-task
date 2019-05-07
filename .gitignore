@@ -65,3 +65,5 @@ package-lock.json
 .DS_Store
 
 .rpt2_cache
+
+/dist/**/*.d.ts

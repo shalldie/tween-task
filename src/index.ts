@@ -11,6 +11,12 @@ const tween = function (t, b, c, d, a, p) {
 
 const duration = 2000;
 
+function setOffset(id: string, { x, y }) {
+    document.getElementById(id).style.cssText =
+        // `left:${x}px;top:${y}px;`;
+        `transform:translate3d(${x}px,${y}px,0)`;
+}
+
 Task.run({
     from: {
         x: 0, y: 50
@@ -21,7 +27,10 @@ Task.run({
     duration,
     tween,
     onUpdate(cord) {
-        document.getElementById('block1').style.cssText = `left:${cord.x}px;top:${cord.y}px;`;
+        setOffset('block1', cord);
+    },
+    done: cord => {
+        console.log('interval:', cord);
     }
 });
 
@@ -35,18 +44,17 @@ const task = new Task({
     duration,
     tween,
     onUpdate(cord) {
-        document.getElementById('block2').style.cssText = `left:${cord.x}px;top:${cord.y}px;`;
+        setOffset('block2', cord);
+    },
+    done: cord => {
+        console.log('requestAnimationFrame:', cord);
     }
 });
 
-function invoke() {
-
+(function update() {
     task.update();
     if (task.done) {
         return;
     }
-
-    requestAnimationFrame(invoke);
-}
-
-invoke();
+    requestAnimationFrame(update);
+})();

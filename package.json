@@ -1,8 +1,9 @@
 {
   "name": "tween-task",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A lib to make easy tween tasks.",
   "main": "./dist/tween-task.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -c --watch",
     "build": "cross-env NODE_ENV=production rollup -c"

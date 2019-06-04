@@ -7,6 +7,7 @@ import Timer from "./timer";
 // };
 
 const linear = (t, b, c, d) => c * t / d + b;
+const TIMER_FUNC = '__TIMER_FUNC';
 
 interface ITaskOptions<T> {
     from: T;
@@ -88,12 +89,21 @@ export default class Task<T> {
      */
     public static run<T>(options: ITaskOptions<T>): Task<T> {
         const task = new Task(options).start();
-
-        Timer.add(remove => {
+        task[TIMER_FUNC] = remove => {
             task.update();
             task.done && remove();
-        });
+        };
+        Timer.add(task[TIMER_FUNC]);
         return task;
+    }
+
+    /**
+     * 释放资源，停止动画
+     *
+     * @memberof Task
+     */
+    dispose() {
+        Timer.remove(this[TIMER_FUNC]);
     }
 
 }

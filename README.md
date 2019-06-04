@@ -81,9 +81,10 @@ interface ITaskOptions<T> {
 
 ## Methods
 
-|  Name  |                 Description                 |
-| :----- | :-----------------------------------------: |
-| update | make the task to computed <br> 主动触发计算 |
+|  Name   |                 Description                 |
+| :------ | :-----------------------------------------: |
+| update  | make the task to computed <br> 主动触发计算 |
+| dispose |  dispose the task <br> 释放资源、停止动画   |
 
 Example:
 

@@ -1,6 +1,6 @@
 {
   "name": "tween-task",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A lib to make easy tween tasks.",
   "main": "./dist/tween-task.js",
   "types": "dist/index.d.ts",

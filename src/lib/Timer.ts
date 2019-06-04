@@ -45,7 +45,9 @@ export default class Timer {
             }
 
             for (let i = 0, len = Timer.callbacks.length; i < len; i++) {
-                Timer.callbacks[i](() => Timer.removeByIndex(i));
+                const func = Timer.callbacks[i];
+                func(() => Timer.remove(func));
+                // Timer.callbacks[i](() => Timer.removeByIndex(i));
             }
         }, 17) as any as number;
 

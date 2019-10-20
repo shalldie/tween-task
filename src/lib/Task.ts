@@ -1,11 +1,11 @@
-import Timer from "./timer";
-
+import Timer from './timer';
 
 // function linear(t: number, b: number, c: number, d: number, s = 1.70158) {
 //     if (s == undefined) s = 1.70158;
 //     return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
 // };
 
+// eslint-disable-next-line
 const linear = (t, b, c, d) => c * t / d + b;
 const TIMER_FUNC = '__TIMER_FUNC';
 
@@ -16,7 +16,7 @@ interface ITaskOptions<T> {
     tween?: Function;
     onUpdate?: (cord: T) => void;
     done?: (cord: T) => void;
-};
+}
 
 export default class Task<T> {
 
@@ -64,7 +64,7 @@ export default class Task<T> {
 
         const { from, to, tween, duration } = this.options;
         const result = {} as T;
-        for (let key in from) {
+        for (const key in from) {
             const start = from[key] as any as number;
             const end = to[key] as any as number;
             result[key] = tween(t, start, end - start, duration);
@@ -89,7 +89,7 @@ export default class Task<T> {
      */
     public static run<T>(options: ITaskOptions<T>): Task<T> {
         const task = new Task(options).start();
-        task[TIMER_FUNC] = remove => {
+        task[TIMER_FUNC] = (remove: Function): void => {
             task.update();
             task.done && remove();
         };
@@ -102,7 +102,7 @@ export default class Task<T> {
      *
      * @memberof Task
      */
-    dispose() {
+    dispose(): void {
         Timer.remove(this[TIMER_FUNC]);
     }
 

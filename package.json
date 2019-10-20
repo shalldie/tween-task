@@ -1,12 +1,22 @@
 {
   "name": "tween-task",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A lib to make easy tween tasks.",
   "main": "./dist/tween-task.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -c --watch",
-    "build": "cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "lint": "eslint . --ext .ts"
+  },
+  "directories": {
+    "test": "__tests__"
+  },
+  "files": [
+    "/dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
@@ -24,10 +34,13 @@
   },
   "homepage": "https://github.com/shalldie/tween-task#readme",
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "rollup": "^1.10.0",
-    "rollup-plugin-typescript2": "^0.20.1",
-    "rollup-plugin-uglify": "^6.0.2",
-    "typescript": "^3.4.3"
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.5.1",
+    "rollup": "^1.25.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "typescript": "^3.6.4"
   }
 }
